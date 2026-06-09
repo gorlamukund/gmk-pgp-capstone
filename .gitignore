@@ -1,0 +1,26 @@
+# Virtual Environment
+venv/
+
+# Environment Variables (SECRET - never upload this!)
+.env
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ChromaDB local database
+chroma_db/
+
+# Mac system files
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# Uploaded documents (too large for Git)
+data/
+
+# Log files
+*.log
