@@ -6,7 +6,7 @@ import os
 import streamlit as st
 from loguru import logger
 
-from app.agents.agent import DocumentAgent
+from app.agents.agent_sdk import DocumentAgent
 from app.core.config import settings
 from app.services.document_processor import DocumentProcessor
 from app.services.ingestion import IngestionService
