@@ -26,21 +26,31 @@ In this scenario, the documents uploaded are related to SAP Business Technology 
 
 ## System Architecture
 
-User Interface (Streamlit)
+### Document Ingestion Flow (one-time setup)
+User uploads document
 ↓
 Input Validation (validator.py)
 ↓
-Document Upload → DocumentProcessor → IngestionService → ChromaDB
+DocumentProcessor → IngestionService → ChromaDB
+
+### Query Flow
+User Question
 ↓
-User Query → DocumentAgent (Claude AI)
+Streamlit UI (streamlit_app.py)
+↓
+Input Validation (validator.py)
+↓
+DocumentAgent → ReActAgent (agent.py)
+↓
+tools.py → search_documents / summarize_topic
 ↓
 RetrieverService → ChromaDB (Similarity Search)
 ↓
-RAG Pipeline → Claude generates grounded answer
+Claude LLM generates grounded answer
 ↓
 Guardrails (guardrails.py) → Validated Response
 ↓
-User Interface (Streamlit)
+Streamlit UI displays answer to User
 
 ---
 
@@ -61,7 +71,8 @@ The system uses an AI agent with the following roles:
 gmk-pgp-capstone/
 ├── app/
 │   ├── agents/
-│   │   ├── agent.py          # ReActAgent with Anthropic tool calling
+│   │   ├── agent.py          # LlamaIndex ReActAgent (active)
+|   |   ├── agent_sdk.py      # Anthropic SDK implementation (reference)
 │   │   └── tools.py          # Agent tools definition
 │   ├── core/
 │   │   ├── config.py         # Central configuration
@@ -244,7 +255,7 @@ This loads the SAP BTP documentation into ChromaDB.
 ## Challenges Faced
 
 - LlamaIndex version conflicts resolved by removing pinned versions
-- ReActAgent API changed in newer LlamaIndex versions — switched to native Anthropic tool calling
+- ReActAgent API changed in newer LlamaIndex versions — resolved by migrating to LlamaIndex ReActAgent with ThreadPoolExecutor to handle uvloop/Streamlit async conflict on macOS
 - `.md` file support required adding a custom `_process_markdown` method
 - Model name format differences between LlamaIndex Anthropic plugin versions
 
