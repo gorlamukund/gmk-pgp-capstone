@@ -67,6 +67,16 @@ The system uses an AI agent with the following roles:
 
 ---
 
+### Note on RAG Pipeline
+`app/core/rag_pipeline.py` implements a standalone RAG pipeline
+satisfying Guideline 7. The active query path uses the AI Agent
+(`agent.py`) which internally performs the same RAG pattern:
+retrieve → generate. Both implementations are included in the
+codebase. The agent path is invoked by the UI for its multi-step
+reasoning capability.
+
+---
+
 ## Project Structure
 gmk-pgp-capstone/
 ├── app/
