@@ -33,6 +33,13 @@ if "agent" not in st.session_state:
 st.title("🤖 SAP BTP Document Assistant")
 st.caption(f"Powered by Claude AI | Version {settings.APP_VERSION}")
 
+# Health check indicator
+with st.expander("🟢 System Status"):
+    st.success("✅ Application is running")
+    st.info(f"🤖 LLM Model: {settings.LLM_MODEL}")
+    st.info(f"📦 App Version: {settings.APP_VERSION}")
+    st.info("🗄️ Vector Store: ChromaDB")
+
 # Sidebar - Document Upload
 with st.sidebar:
     st.header("📁 Document Upload")
