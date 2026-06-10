@@ -198,7 +198,7 @@ streamlit run streamlit_app.py
 4. Configure:
    - **Build Command:** `pip install -r requirements.txt`
    - **Start Command:** `streamlit run streamlit_app.py --server.port $PORT --server.address 0.0.0.0`
-5. Add environment variables from `.env.example`
+5. Add environment variables from `.env` file
 6. Click **Deploy**
 
 ### Option 3 — Docker
