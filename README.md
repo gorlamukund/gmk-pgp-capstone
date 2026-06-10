@@ -110,10 +110,9 @@ pip install -r requirements.txt
 ```
 
 4. Configure environment variables:
-```bash
-cp .env.example .env
-# Add your Anthropic API key to .env
-```
+   - Open the `.env` file
+   - Replace `your_anthropic_api_key_here` with your actual Anthropic API key
+   - Get your API key from `https://console.anthropic.com`
 
 5. Ingest documents:
 ```bash

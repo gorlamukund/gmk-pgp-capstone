@@ -3,6 +3,7 @@ venv/
 
 # Environment Variables (SECRET - never upload this!)
 .env
+!.env.example
 
 # Python cache files
 __pycache__/
