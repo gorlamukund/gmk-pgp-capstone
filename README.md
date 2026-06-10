@@ -12,15 +12,15 @@ In this scenario, the documents uploaded are related to SAP Business Technology 
 
 ## Tech Stack
 
-| Component    | Technology |
-|--------------|------------|
-| Language     | Python 3.13.2 |
-| LLM          | Claude (Anthropic API) |
-| Framework    | LlamaIndex |
-| Vector Store | ChromaDB |
+| Component    | Technology                           |
+|--------------|--------------------------------------|
+| Language     | Python 3.13.2                        |
+| LLM          | Claude (Anthropic API)               |
+| Framework    | LlamaIndex                           |
+| Vector Store | ChromaDB                             |
 | Embeddings   | HuggingFace (BAAI/bge-small-en-v1.5) |
-| UI           | Streamlit |
-| Deployment   | Render |
+| UI           | Streamlit                            |
+| Deployment   | Render                               |
 
 ---
 
@@ -142,6 +142,67 @@ streamlit run streamlit_app.py
 2. Upload documents using the sidebar (PDF, TXT, CSV, Excel, JSON, YAML, Markdown)
 3. Type your question in the chat input
 4. The AI agent retrieves relevant content and generates a grounded answer
+
+---
+
+## UI Usage Guide
+
+### Main Interface
+The application has two main areas:
+
+**Sidebar (left panel):**
+- **Document Upload** — upload your own documents (PDF, TXT, CSV, Excel, JSON, YAML, Markdown)
+- **Ingested Documents** — shows list of successfully uploaded documents
+- **Clear Chat History** — resets the conversation
+
+**Main Panel:**
+- **System Status** — confirms app is running with model and version info
+- **Chat Interface** — type your questions in the input box at the bottom
+- **Chat History** — all questions and answers displayed in conversation format
+
+---
+
+### How to Use
+
+**Step 1 — Start the app:**
+```bash
+streamlit run streamlit_app.py
+```
+
+**Step 2 — Ingest documents (first time only):**
+```bash
+python ingest_docs.py
+```
+This loads the SAP BTP documentation into ChromaDB.
+
+**Step 3 — Upload additional documents (optional):**
+- Click **Browse files** in the sidebar
+- Select your document
+- Wait for the success message
+
+**Step 4 — Ask questions:**
+- Type your question in the chat input at the bottom
+- Press **Enter**
+- Wait for the AI agent to retrieve and generate an answer
+
+---
+
+### Example Questions
+- `What is SAP AI Core?`
+- `How do I create a deployment in SAP AI Launchpad?`
+- `What are the key features of SAP AI Core?`
+- `How do I manage resource groups?`
+- `What are the service plans available in SAP AI Core?`
+
+---
+
+### Input Validation Rules
+| Rule                 | Limit                               |
+|----------------------|-------------------------------------|
+| Minimum query length | 3 characters                        |
+| Maximum query length | 500 characters                      |
+| Maximum file size     | 10 MB                               |
+| Supported file types  | PDF, TXT, CSV, XLSX, JSON, YAML, MD |
 
 ---
 
