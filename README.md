@@ -25,6 +25,7 @@ In this scenario, the documents uploaded are related to SAP Business Technology 
 ---
 
 ## System Architecture
+> 📊 See the full architecture diagram: `screenshots/mukund gorla-capstone-architecture-diagram.jpeg`
 
 ### Document Ingestion Flow (one-time setup)
 User uploads document
